@@ -17,11 +17,14 @@ jobs:
       with:
         go-version: '1.19'
 
-    #- name: Build Go-WEMIX tarball
-    #  run: make gwemix.tar.gz
+    - name: Build Go-WEMIX tarball
+      run: USE_ROCKSDB=YES make gwemix.tar.gz
 
-    #- name: Stat Go-WEMIX tarball
-    #  run: ls -l build/gwemix.tar.gz && tar tf build/gwemix.tar.gz
+    - name: Stat Go-WEMIX tarball
+      run: ls -l build/gwemix.tar.gz && tar tf build/gwemix.tar.gz
+
+    - name: Rename tarball
+      run: mv build/gwemix.tar.gz gwemix-${{ github.ref_name }}-linux-rocksdb.tar.gz
 
     - name: GH Release
       uses: softprops/action-gh-release@v2.0.5
@@ -31,7 +34,7 @@ jobs:
         # Path to load note-worthy description of changes in release from
         #body_path: # optional
         # Gives the release a custom name. Defaults to tag name
-        name: WEMIX3.0 Mainnet and Testnet Build (${{ github.ref_name }})
+        name: WEMIX3.0 Mainnet and Testnet Build (${{ github.sha }})
         # Gives a tag name. Defaults to github.GITHUB_REF
         #tag_name: # optional
         # Creates a draft release. Defaults to false
@@ -40,8 +43,7 @@ jobs:
         #prerelease: # optional
         # Newline-delimited list of path globs for asset files to upload
         files: |
-          README.md
-          Dockerfile
+          gwemix-${{ github.ref_name }}-linux-rocksdb.tar.gz
         # Fails if any of the `files` globs match nothing. Defaults to false
         #fail_on_unmatched_files: # optional
         # Repository to make releases against, in <owner>/<repo> format
@@ -63,5 +65,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: artifact-${{ github.sha }}
-        path: README.md
+        path: gwemix-${{ github.ref_name }}-linux-rocksdb.tar.gz
         retention-days: 1
