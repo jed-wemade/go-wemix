@@ -31,7 +31,7 @@ jobs:
         # Path to load note-worthy description of changes in release from
         #body_path: # optional
         # Gives the release a custom name. Defaults to tag name
-        #name: # optional
+        name: WEMIX3.0 Mainnet and Testnet Build ${{ github.ref }}
         # Gives a tag name. Defaults to github.GITHUB_REF
         #tag_name: # optional
         # Creates a draft release. Defaults to false
