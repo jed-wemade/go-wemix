@@ -38,7 +38,7 @@ jobs:
         # Identify the release as a prerelease. Defaults to false
         prerelease: true
         # Newline-delimited list of path globs for asset files to upload
-        files:
+        files: |
           README.md
           Dockerfile
         # Fails if any of the `files` globs match nothing. Defaults to false
