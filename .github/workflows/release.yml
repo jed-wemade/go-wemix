@@ -62,5 +62,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Go-results-${{ matrix.go-version }}
-        path: Readme.md
+        path: README.md
         retention-days: 1
