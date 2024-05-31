@@ -1,8 +1,9 @@
-name: Release
+name: "Release a tag"
 
 on:
   push:
-    branches: [ "feat/ga_release" ]
+    tags:
+      - v*
 
 jobs:
 
