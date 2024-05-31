@@ -19,8 +19,8 @@ jobs:
     #- name: Build Go-WEMIX tarball
     #  run: make gwemix.tar.gz
 
-    - name: Stat Go-WEMIX tarball
-      run: ls -l build/gwemix.tar.gz && tar tf build/gwemix.tar.gz
+    #- name: Stat Go-WEMIX tarball
+    #  run: ls -l build/gwemix.tar.gz && tar tf build/gwemix.tar.gz
 
     - name: GH Release
       uses: softprops/action-gh-release@v2.0.5
