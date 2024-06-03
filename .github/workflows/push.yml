@@ -35,11 +35,11 @@ jobs:
         tar tf build/gwemix.tar.gz
 
     - name: Move results to artifact
-      run: mv build/gwemix.tar.gz gwemix-${{ github.event.pull_request.head.sha }}-linux-amd64-rocksdb.tar.gz
+      run: mv build/gwemix.tar.gz gwemix-${{ github.ref_name }}-${{ github.sha }}-linux-amd64-rocksdb.tar.gz
 
     - name: Upload Go-WEMIX
       uses: actions/upload-artifact@v4
       with:
         name: artifact-${{ github.ref_name }}-${{ github.sha }}
-        path: gwemix-${{ github.ref_name }}-linux-rocksdb.tar.gz
+        path: gwemix-${{ github.ref_name }}-${{ github.sha }}-linux-rocksdb.tar.gz
         retention-days: 7
