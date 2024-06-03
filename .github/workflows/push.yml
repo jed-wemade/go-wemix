@@ -1,0 +1,23 @@
+name: "Update dev"
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Print branch
+      run: |
+        echo "ref" ${{ github.ref }}
+        echo "ref_name" ${{ github.ref_name }}
+        echo "head_ref" ${{ github.head_ref }}
+        echo "base_ref" ${{ github.base_ref }}
