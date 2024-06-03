@@ -67,6 +67,6 @@ jobs:
     - name: Upload Go test results
       uses: actions/upload-artifact@v4
       with:
-        name: artifact-${{ github.sha }}
+        name: artifact-${{ github.ref_name }}-${{ github.sha }}
         path: gwemix-${{ github.ref_name }}-linux-rocksdb.tar.gz
         retention-days: 1
