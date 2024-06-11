@@ -19,14 +19,8 @@ jobs:
 
     - name: Setup packages
       run: |
-        sudo apt install -y libjemalloc-dev liblz4-dev libsnappy-dev libzstd-dev libudev-dev net-tools
+        sudo apt install -y libjemalloc-dev liblz4-dev libsnappy-dev libzstd-dev libudev-dev
         sudo apt remove -y bzip2 libbz2-dev zlib1g-dev
-    - name: (test)
-      run: find /usr/ -name "libresolv.so*"
-    - name: (test)
-      run: find /lib64/ -name "libresolv.so*"
-    - name: (test)
-      run: find /lib/ -name "libresolv.so*"
 
     - name: Build Go-WEMIX tarball (rocksdb)
       run: USE_ROCKSDB=YES make gwemix.tar.gz
