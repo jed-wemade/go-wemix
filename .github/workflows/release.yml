@@ -20,7 +20,7 @@ jobs:
     - name: Setup packages
       run: |
         sudo apt install -y libjemalloc-dev liblz4-dev libsnappy-dev libzstd-dev
-        sudo apt autoremove -y bzip2 zlib1g-dev
+        sudo apt autoremove -y bzip2 zlib1g
 
     - name: Build Go-WEMIX tarball (rocksdb)
       run: USE_ROCKSDB=YES make gwemix.tar.gz
