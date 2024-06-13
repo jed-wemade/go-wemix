@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - devnet
+      - dev
       - master
 
 jobs:
@@ -22,12 +23,14 @@ jobs:
 
     - name: Set version
       id: set_version
-      run: echo "GWEMIX_VERSION=1.4.3" >> "$GITHUB_OUTPUT"
+      run: |
+        echo "GWEMIX_VERSION=1.4.3" >> "$GITHUB_ENV"
+        echo "GWEMIX_COMMITHASH=$(echo ${{ github.sha }} | cut -c-8)" >> "$GITHUB_ENV"
 
     - name: get version
-      env:
-        GWEMIX_VERSION: ${{ steps.set_version.outputs.GWEMIX_VERSION }}
-      run: echo "[XXX] $GWEMIX_VERSION"
+      run: |
+        echo "[XXX] $GWEMIX_VERSION"
+        echo "[XXX] $GWEMIX_COMMITHASH"
 
     - name: Set up Go
       uses: actions/setup-go@v4
