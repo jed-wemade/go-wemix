@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - devnet
+      - dev
       - master
 
 jobs:
@@ -19,6 +20,15 @@ jobs:
         echo "ref_name" ${{ github.ref_name }}
         echo "head_ref" ${{ github.head_ref }}
         echo "base_ref" ${{ github.base_ref }}
+
+    - name: Set version
+      id: set_version
+      run: echo "GWEMIX_VERSION=1.4.3" >> "$GITHUB_OUTPUT"
+
+    - name: get version
+      env:
+        GWEMIX_VERSION: ${{ steps.set_version.outputs.GWEMIX_VERSION }}
+      run: echo "[XXX] $GWEMIX_VERSION"
 
     - name: Set up Go
       uses: actions/setup-go@v4
