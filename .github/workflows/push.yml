@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - devnet
-      - dev
       - master
 
 jobs:
@@ -25,9 +24,9 @@ jobs:
       id: set_version
       run: |
         echo "GWEMIX_VERSION=1.4.3" >> "$GITHUB_ENV"
-        echo "GWEMIX_COMMITHASH=$(echo ${{ github.sha }} | cut -c-8)" >> "$GITHUB_ENV"
+        echo "GWEMIX_COMMITHASH=$(echo ${{ github.sha }} | cut -c1-8)" >> "$GITHUB_ENV"
 
-    - name: get version
+    - name: Get version
       run: |
         echo "[XXX] $GWEMIX_VERSION"
         echo "[XXX] $GWEMIX_COMMITHASH"
